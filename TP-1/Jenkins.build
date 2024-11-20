@@ -1,3 +1,4 @@
+
 def backendImage = ''
 def frontendImage = ''
 pipeline {
@@ -9,14 +10,14 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git branch: 'main', credentialsId: 'myid', url: '......'
+        git branch: 'main', credentialsId: 'Git', url: 'https://github.com/ST2DCE/2024-2025.git'
       }
     }
     stage('Building backend image') {
       steps {
         script {
           dir('TP-1/backend') {
-            backendImage = docker.build("efrei2023/backend:1")
+            backendImage = docker.build("backend-antoine:2002")
 
           }
         }
@@ -37,7 +38,7 @@ pipeline {
       steps {
         script {
           dir('TP-1/frontend') {
-            frontendImage = docker.build("efrei2023/frontend:1")
+            frontendImage = docker.build("frontend-antoine:2002")
           }
         }
       }
