@@ -16,10 +16,15 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: efrei2023/frontend:$TAG
+          image: efrei2023/frontend-charlotte:2002
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
+          env:
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_USER
+              value: postgres
       imagePullSecrets:
         - name: efrei2023
 ---
