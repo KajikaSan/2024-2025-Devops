@@ -9,6 +9,11 @@
     shell: /bin/false
     system: yes
 
+- name: Give access to log files to promtail user
+  shell:
+    cmd: sudo setfacl -R -m u:promtail:rX log
+    chdir: /var
+
 - name: Ensure configuration directory exists
   file:
     path: "{{ promtail_config_dir }}"
